@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% block title %}Edit Student{% endblock %}
+
+{% block main_content %}
+<h3>Edit Student</h3>
+
+<form method="post" class="w-50">
+    {% csrf_token %}
+
+    <input class="form-control mb-3"
+           type="text"
+           name="full_name"
+           value="{{ student.full_name }}"
+           required>
+
+    <input class="form-control mb-3"
+           type="email"
+           name="email"
+           value="{{ student.email }}"
+           required>
+
+    <input class="form-control mb-3"
+           type="number"
+           name="age"
+           value="{{ student.age }}"
+           required>
+
+    <select class="form-control mb-4" name="course" required>
+        {% for course in courses %}
+            <option value="{{ course.id }}"
+                {% if student.course.id == course.id %}selected{% endif %}>
+                {{ course.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button class="btn btn-primary">Update</button>
+    <a href="{% url 'student_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

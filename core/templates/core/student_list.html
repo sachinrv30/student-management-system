@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+{% block title %}Students{% endblock %}
+
+{% block main_content %}
+<div class="d-flex justify-content-between">
+    <h3>Students</h3>
+    <a href="/students/add/" class="btn btn-primary">Add Student</a>
+</div>
+
+<table class="table table-hover mt-3">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Course</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for s in students %}
+    <tr>
+        <td>{{ s.full_name }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.age }}</td>
+        <td>{{ s.course.name }}</td>
+        <td>
+            <a href="/students/edit/{{ s.id }}/" class="btn btn-sm btn-warning">Edit</a>
+            <a href="/students/delete/{{ s.id }}/" class="btn btn-sm btn-danger"
+               onclick="return confirm('Are you sure you want to delete this student?')">
+               Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

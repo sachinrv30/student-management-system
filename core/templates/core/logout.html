@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block main_content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Logged Out Successfully!</h4>
+                <p>You have been logged out successfully.</p>
+                <hr>
+                <p class="mb-0">You can now close this page or login again.</p>
+            </div>
+            
+            <div class="mt-4">
+                <a href="{% url 'student_list' %}" class="btn btn-primary">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
