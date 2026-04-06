@@ -1,1 +1,2 @@
-# Sachin Git Project
+python3 manage.py migrate
+python3 manage.py runserver# Sachin Git Project
